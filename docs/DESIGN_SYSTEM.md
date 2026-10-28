@@ -26,3 +26,6 @@ Workflow GitHub Actions executa validação estática e Playwright 5 resoluçõe
 
 ## Experiência exclusiva de quadro Kanban
 Três colunas reais para etapas A fazer, Em treino e Concluído, com cartões editáveis, indicadores por coluna, preservação de filtros e compatibilidade mobile. Identidade tática de planejamento em `identity.css`, distinta de páginas de diário.
+
+## Kanban interativo
+`Avançar etapa` e `Reabrir` movimentam registros entre A fazer, Em treino e Concluído sem abrir formulário. Indicadores por objetivo calculam tarefas concluídas/total e exibem barra acessível. O schema LocalStorage é preservado. Testes validam movimentação, recarregamento e indicadores.
