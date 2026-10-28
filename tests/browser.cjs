@@ -24,6 +24,16 @@ const sleep=ms=>new Promise(r=>setTimeout(r,ms));
  if(await field.getAttribute("type")==="text"){await field.fill(current+" QA")}else{const config=await page.evaluate(()=>window.APP_CONFIG);const textField=config.fields.find(f=>f.kind==="text");await page.locator("#field-"+textField.key).fill("Teste QA")}
  await page.getByRole("button",{name:"Atualizar registro"}).click();
  if(await entries.count()!==expected)errors.push("Edit should not add entry");
+ // Kanban progress must persist after moving a card across columns.
+ const task=page.locator(".kanban-lane .record").first();
+ const taskTitle=await task.locator("h3").textContent();
+ const stage=await task.evaluate(el=>el.closest(".kanban-lane").dataset.stage);
+ await task.getByRole("button",{name:stage==="Concluído"?"Reabrir":"Avançar etapa"}).click();
+ const expectedStage=stage==="A fazer"?"Em treino":stage==="Em treino"?"Concluído":"A fazer";
+ if(await page.locator(".kanban-lane[data-stage=\""+expectedStage+"\"] .record h3").filter({hasText:taskTitle}).count()===0)errors.push("Kanban advance failed");
+ await page.reload();
+ if(await page.locator(".kanban-lane[data-stage=\""+expectedStage+"\"] .record h3").filter({hasText:taskTitle}).count()===0)errors.push("Kanban state did not persist");
+ if(await page.locator("#insights .objective-progress").count()===0)errors.push("Objective progress missing");
  const downloadPromise=page.waitForEvent("download");await page.getByRole("button",{name:"Exportar JSON"}).click();const download=await downloadPromise;
  if(!download.suggestedFilename().endsWith(".json"))errors.push("JSON export failed");
  await page.locator("#search").fill("código sem correspondência");
