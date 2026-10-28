@@ -78,7 +78,8 @@ function render(){
  const filtered=[...rows].sort((a,b)=>b.updatedAt.localeCompare(a.updatedAt)).filter(r=>
   (!group||r[C.groupBy]===group)&&(!stage||r.status===stage)&&(!query||fields.some(f=>String(r[f.key]||"").toLocaleLowerCase("pt-BR").includes(query)))
  );
- e.list.replaceChildren(...filtered.map(card));e.empty.hidden=rows.length>0;
+ const lanes=C.states.map(status=>{const lane=node("section","kanban-lane");lane.dataset.stage=status;const head=node("div","lane-head"),arr=filtered.filter(r=>r.status===status);head.append(node("h3","",status),node("span","",arr.length));lane.append(head,...arr.map(card));if(!arr.length)lane.append(node("p","lane-empty","Nenhuma tarefa nesta etapa."));return lane;});
+ e.list.replaceChildren(...lanes);e.empty.hidden=rows.length>0;
  if(rows.length&&!filtered.length)e.list.append(node("p","muted","Nenhum registro encontrado com estes filtros."));
  byId("stat-total").textContent=rows.length;
  byId("stat-reviewed").textContent=rows.filter(r=>r.status===C.states.at(-1)).length;
