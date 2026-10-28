@@ -35,3 +35,6 @@ Capturas reais Playwright 320/390px revisadas. Correção do skip link oculto po
 
 ## Accessibility QA — 28/10/2026
 Testes Playwright de Tab/Shift+Tab, skip link para a área principal, foco visível, rótulos e contraste dos inputs e placeholders (4,5:1), botões/links e campos com altura mínima de 44px. Layout e dados existentes preservados; teste automático direcionado não substitui auditoria WCAG integral.
+
+## Menu móvel do Kanban
+Menu com identidade tática laranja para acessar diretamente Quadro Kanban, Evolução das metas e Criar tarefa, até 650px. Navegação por teclado, Escape e fechamento por link/fora são testados em cinco resoluções. O armazenamento local e o esquema dos cards continuam intactos.
