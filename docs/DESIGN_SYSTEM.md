@@ -38,3 +38,6 @@ Testes Playwright de Tab/Shift+Tab, skip link para a área principal, foco visí
 
 ## Menu móvel do Kanban
 Menu com identidade tática laranja para acessar diretamente Quadro Kanban, Evolução das metas e Criar tarefa, até 650px. Navegação por teclado, Escape e fechamento por link/fora são testados em cinco resoluções. O armazenamento local e o esquema dos cards continuam intactos.
+
+## Atalhos desktop por produto
+Menu de desktop: Quadro Kanban, Objetivos, Criar tarefa. IDs e navegação auditados no Playwright; cabeçalho intermediário libera espaço ocultando badge decorativo. Identidade original preservada e menu móvel independente.
