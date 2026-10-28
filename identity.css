@@ -14,3 +14,8 @@ body{background:#111a1f;color:#f8f8f4;font-family:system-ui,-apple-system,sans-s
 .record-buttons{flex-wrap:wrap}.record-buttons .advance{background:#ffbb8b;color:#1d2a2f;border-color:#ffbb8b;flex:1;min-width:118px;font-weight:900}
 .record-buttons .advance:hover{background:#ffdfb3}.objective-progress{height:9px;background:#364a53;border:1px solid #65818b;border-radius:99px;margin-top:14px;overflow:hidden}.objective-progress-fill{height:100%;display:block;background:#95ddb0;border-radius:99px}
 @media(max-width:650px){.record-buttons{flex-wrap:wrap}.record-buttons button{min-width:0}}
+
+/* Audit: off-screen fixed anchors must be fully clipped in scroll-based full-page captures. */
+.skip,.skip-link{top:0;left:12px;width:1px;height:1px;padding:0;border:0;overflow:hidden;white-space:nowrap;clip-path:inset(50%)}
+.skip:focus,.skip-link:focus{top:10px;width:auto;height:auto;padding:10px 15px;overflow:visible;white-space:normal;clip-path:none}
+@media(max-width:480px){.hero{padding-block:44px 35px}.hero h1{font-size:clamp(39px,10vw,53px);line-height:1.03;letter-spacing:-.055em}.hero:before{font-size:9px}.stats{margin-top:0}.records{padding-top:45px!important}.kanban-lane{min-height:0}}
