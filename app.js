@@ -50,6 +50,7 @@ function card(r){
  for(const [action,label] of [["edit","Editar"],["delete","Excluir"]]){
   const b=node("button",action==="delete"?"warn":"",label);b.type="button";b.dataset.action=action;b.dataset.id=r.id;controls.append(b);
  }
+ if(C.states.indexOf(r.status)>=0){const b=node("button","advance",r.status===C.states.at(-1)?"Reabrir":"Avançar etapa");b.type="button";b.dataset.action="advance";b.dataset.id=r.id;controls.prepend(b);}
  article.append(controls);return article;
 }
 function insights(){
@@ -64,7 +65,11 @@ function insights(){
   if(C.repo==="lol-role-mastery"){
    box.append(node("small","", "Autoavaliação média: "+(rs.reduce((a,b)=>a+b.rating,0)/rs.length).toFixed(1).replace(".",",")+" / 5 (manual)"));
   }else if(C.repo==="ow-improvement-roadmap"){
-   box.append(node("small","",rs.filter(r=>r.status==="Concluído").length+" tarefa(s) concluída(s) no seu plano"));
+   const finished=rs.filter(r=>r.status==="Concluído").length;
+   box.append(node("small","",finished+" de "+rs.length+" tarefas concluídas (manual)"));
+   const track=node("div","objective-progress"),fill=node("span","objective-progress-fill");
+   track.setAttribute("role","progressbar");track.setAttribute("aria-label","Conclusão de tarefas de "+group);track.setAttribute("aria-valuemin","0");track.setAttribute("aria-valuemax","100");track.setAttribute("aria-valuenow",String(Math.round(finished/rs.length*100)));
+   fill.style.width=String(finished/rs.length*100)+"%";track.append(fill);box.append(track);
   }else{
    box.append(node("small","", "Média de colocação do tabuleiro: "+(rs.reduce((a,b)=>a+b.placement,0)/rs.length).toFixed(1).replace(".",",")+" (amostra manual)"));
   }
@@ -101,6 +106,11 @@ e.list.addEventListener("click",event=>{
  const button=event.target.closest("button[data-action]");if(!button)return;
  const index=rows.findIndex(r=>r.id===button.dataset.id);if(index<0)return;
  const current=rows[index];
+ if(button.dataset.action==="advance"){
+  const next=C.states[(C.states.indexOf(current.status)+1)%C.states.length];
+  rows[index]={...current,status:next,updatedAt:new Date().toISOString()};
+  if(editId===current.id)reset();persist();render();announce("Tarefa movida para "+next+".");return;
+ }
  if(button.dataset.action==="edit"){
   editId=current.id;for(const f of fields)byId("field-"+f.key).value=current[f.key];
   byId("save").textContent="Atualizar registro";byId("cancel").hidden=false;
