@@ -29,3 +29,6 @@ Três colunas reais para etapas A fazer, Em treino e Concluído, com cartões ed
 
 ## Kanban interativo
 `Avançar etapa` e `Reabrir` movimentam registros entre A fazer, Em treino e Concluído sem abrir formulário. Indicadores por objetivo calculam tarefas concluídas/total e exibem barra acessível. O schema LocalStorage é preservado. Testes validam movimentação, recarregamento e indicadores.
+
+## Visual QA mobile — 28/10/2026
+Capturas reais Playwright 320/390px revisadas. Correção do skip link oculto por `clip-path` fora do foco e visível ao focar com teclado. Banner de apresentação reduzido em telas pequenas para priorizar os fluxos de treino. QA automatizado acrescenta validação de foco sem abrir APIs externas.
