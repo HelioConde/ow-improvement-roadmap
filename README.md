@@ -1,46 +1,26 @@
-<div align="center">
-  <h1>🧪 OW Improvement Roadmap</h1>
-  <p><strong>Um plano prático de treino para converter uma habilidade específica em tarefas pequenas e revisões de progresso.</strong></p>
-  <p><img alt="Status" src="https://img.shields.io/badge/status-concep%C3%A7%C3%A3o-64748b"></p>
-</div>
+# OW Improvement Roadmap
 
-> **Projeto em concepção — documentação apenas.** O repositório ainda não contém frontend, backend ou aplicativo executável. O fluxo abaixo é um plano de produto, não uma funcionalidade disponível.
+Organize um plano de duas a quatro semanas, pratique pequenas tarefas e acompanhe seus registros de revisão. Seu progresso é autodeclarado.
 
-## Problema
+## MVP funcional
+- Criar, editar, excluir e pesquisar registros manuais.
+- Filtrar por grupo (objective) e estado de revisão; visualizar resumos locais.
+- Backup JSON com importação validada, versão e limite de 200 registros; exemplos **fictícios** opcionais.
+- Persistência em LocalStorage, sem servidor, autenticação, API Riot/Blizzard nem banco de dados.
+- Layout responsivo, teclado, foco visível e movimento reduzido.
 
-Feedback genérico como 'melhorar posicionamento' costuma falhar porque não define treino, prazo nem critério de progresso.
+## Executar
+```bash
+python -m http.server 8000
+```
+Abrir `http://localhost:8000`.
 
-## Experiência proposta
+## GitHub Pages
+Publicação estática a partir de `gh-pages/(root)`, com apenas `index.html`, `config.js`, `app.js`, `styles.css`, `favicon.svg` e `.nojekyll`. Se Pages ainda não estiver habilitado, ativar em Settings → Pages → Deploy from a branch → gh-pages / (root). A fonte de publicação não executa serviços externos.
 
-Definir objetivo → dividir em exercícios → marcar sessões de prática → registrar evidências → revisar resultado.
+## Qualidade e histórico
+`docs/DESIGN_SYSTEM.md` contém os padrões Taste/Web Design Guidelines/Awesome Design. Workflow Playwright avalia 320, 390, 768, 1366 e 1600 px, capturando páginas e conferindo formulário, persistência, filtros, backup e fluxo de exclusão.
 
-## Dados mínimos do primeiro protótipo
+O README de concepção original está preservado na branch `archive/readme-only-20261027`.
 
-Objetivo, tarefas, frequência sugerida, evidência, indicador pessoal e estado de conclusão.
-
-## MVP planejado
-
-Editor de plano de 2 a 4 semanas, checklist e histórico de revisão sem autenticação.
-
-**Critério para considerar o MVP útil:** O usuário consegue montar um plano, completar tarefas e alterar a prioridade sem perder dados locais.
-
-## Limites e dependências
-
-O progresso seria autodeclarado no MVP; não prometer avaliação objetiva ou diagnóstico do jogador.
-
-A implementação deve começar com **dados demonstrativos identificados e armazenamento local**, se adequado. Integrações externas, autenticação e anúncios exigem revisão própria; não serão anunciados como funcionais antes de existirem.
-
-## Próximo passo
-
-1. Desenhar uma tela com o fluxo principal.
-2. Implementar um protótipo pequeno que funcione no celular.
-3. Testar navegação, salvar/recuperar dados e tratamento de casos vazios.
-4. Pedir feedback de usuários antes de ampliar o escopo.
-
-## Projetos relacionados
-
-Este conceito faz parte do [Ideias IA Lab](https://github.com/HelioConde/ideias-ia-lab). Explore [outros repositórios de Hélio Conde](https://github.com/HelioConde?tab=repositories).
-
-*Overwatch pertence aos seus respectivos titulares. Projeto independente, sem afiliação oficial.*
-
-Autor: [Hélio Conde](https://github.com/HelioConde).
+Projeto independente e não afiliado aos donos de League of Legends, TFT ou Overwatch.
