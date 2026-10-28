@@ -23,3 +23,6 @@ Conclusão de tarefas e progresso são autodeclarados; não há monitoramento do
 
 ## QA
 Workflow GitHub Actions executa validação estática e Playwright 5 resoluções com capturas, teste de criação, edição, persistência LocalStorage, exportação, busca, filtros, exclusão e overflow. A publicação usa apenas assets estáticos em `gh-pages/(root)`.
+
+## Experiência exclusiva de quadro Kanban
+Três colunas reais para etapas A fazer, Em treino e Concluído, com cartões editáveis, indicadores por coluna, preservação de filtros e compatibilidade mobile. Identidade tática de planejamento em `identity.css`, distinta de páginas de diário.
